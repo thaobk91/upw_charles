@@ -1,0 +1,12 @@
+# Copyright (c) 2024 Nordic Semiconductor ASA
+# SPDX-License-Identifier: Apache-2.0
+
+if SOC_NRF9160_SICA
+
+config BOARD_NOWI_CELLULAR
+	bool "NOWi Cellular"
+
+config BOARD_NOWI_CELLULAR_NS
+	bool "NOWi Cellular non-secure"
+
+endif # SOC_NRF9160_SICA

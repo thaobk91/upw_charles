@@ -1,0 +1,69 @@
+{
+  "version": 2,
+  "cmakeMinimumRequired": {
+    "major": 3,
+    "minor": 20
+  },
+  "configurePresets": [
+    {
+      "name": "build_nowi_pulse",
+      "displayName": "Build for NOWi Cellular Non Secure",
+      "generator": "Ninja",
+      "binaryDir": "${sourceDir}/build_nowi_pulse",
+      "cacheVariables": {
+        "NCS_TOOLCHAIN_VERSION": "NONE",
+        "BOARD": "nowi_cellular_ns",
+        "BOARD_ROOT": "${sourceDir}/",
+        "mcuboot_OVERLAY_CONFIG": "$env{ZEPHYR_BASE}/../nrf/modules/mcuboot/tfm.conf;$env{ZEPHYR_BASE}/../nrf/modules/mcuboot/fih_low_enable.conf;$env{ZEPHYR_BASE}/../nrf/subsys/partition_manager/partition_manager_enabled.conf",
+        "CACHED_CONF_FILE": "${sourceDir}/prj.conf",
+        "OVERLAY_CONFIG": "${sourceDir}/boards/pulse.conf;${sourceDir}/boards/release.conf"
+      }
+    },
+    {
+      "name": "build_nowi_nrf9160",
+      "displayName": "Build for NOWi Cellular Non Secure",
+      "generator": "Ninja",
+      "binaryDir": "${sourceDir}/build_nowi_nrf9160",
+      "cacheVariables": {
+        "NCS_TOOLCHAIN_VERSION": "NONE",
+        "BOARD": "nowi_cellular_ns",
+        "BOARD_ROOT": "${sourceDir}/",
+        "mcuboot_OVERLAY_CONFIG": "$env{ZEPHYR_BASE}/../nrf/modules/mcuboot/tfm.conf;$env{ZEPHYR_BASE}/../nrf/modules/mcuboot/fih_low_enable.conf;$env{ZEPHYR_BASE}/../nrf/subsys/partition_manager/partition_manager_enabled.conf",
+        "CACHED_CONF_FILE": "${sourceDir}/prj.conf",
+        "OVERLAY_CONFIG": "${sourceDir}/boards/release.conf"
+      }
+    },
+    {
+      "name": "build_dk",
+      "displayName": "Build for nRF9160 DK NRF9160 Non Secure",
+      "generator": "Ninja",
+      "binaryDir": "${sourceDir}/build_dk",
+      "cacheVariables": {
+        "NCS_TOOLCHAIN_VERSION": "NONE",
+        "BOARD": "nrf9160dk_nrf9160_ns",
+        "BOARD_ROOT": "${sourceDir}/",
+        "mcuboot_OVERLAY_CONFIG": "$env{ZEPHYR_BASE}/../nrf/modules/mcuboot/tfm.conf;$env{ZEPHYR_BASE}/../nrf/modules/mcuboot/fih_low_enable.conf;$env{ZEPHYR_BASE}/../nrf/subsys/partition_manager/partition_manager_enabled.conf",
+        "CACHED_CONF_FILE": "${sourceDir}/prj.conf",
+        "OVERLAY_CONFIG": "${sourceDir}/boards/debug.conf",
+        "DTC_OVERLAY_FILE": "${sourceDir}/boards/nrf9160dk_nrf9160_ns.overlay"
+      }
+    },
+    {
+      "name": "build_nowi_nrf9151",
+      "displayName": "Build for nowi_cellular_nrf9151_ns",
+      "generator": "Ninja",
+      "binaryDir": "${sourceDir}/build",
+      "cacheVariables": {
+        "NCS_TOOLCHAIN_VERSION": "NONE",
+        "BOARD": "nowi_cellular_nrf9151_ns",
+        "BOARD_ROOT": "${sourceDir}",
+        "CONF_FILE": "${sourceDir}/prj.conf",
+        "EXTRA_CONF_FILE": "${sourceDir}/boards/pipe_monitor.conf;${sourceDir}/boards/release.conf",
+        "mcuboot_OVERLAY_CONFIG": "$env{ZEPHYR_BASE}/../nrf/modules/mcuboot/tfm.conf;$env{ZEPHYR_BASE}/../nrf/subsys/partition_manager/partition_manager_enabled.conf"
+      },
+      "environment": {
+        "ZEPHYR_BASE": "$env{ZEPHYR_BASE}"
+      }
+    }
+  ]
+}

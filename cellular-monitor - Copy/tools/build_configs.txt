@@ -1,0 +1,5 @@
+# Format: name|build_dir|s3_bucket
+NOWI Cellular (nRF9160)|build_nowi|s3://nrf91-fotas/nowi-cellular
+NOWI Cellular (nRF9151)|build_nowi_nrf9151|s3://nrf91-fotas/nowi-cellular-nrf9151
+Pipe Monitor (nRF9151)|build_nowi_pipe_monitor_nrf9151|s3://nrf91-fotas/pipe_monitor
+

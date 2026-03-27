@@ -1,0 +1,136 @@
+#
+# Copyright (c) 2020 Nordic Semiconductor ASA
+#
+# SPDX-License-Identifier: LicenseRef-Nordic-5-Clause
+#
+
+source "Kconfig.zephyr"
+
+menu "cell building monitor"
+
+config APP_VERSION
+	string "Application version"
+	default "v0.0.0"
+
+config ALGORITHM
+	string "The algorithm to use MIN_MAX, LOGGER, PULSE_TRACKER"
+	default "FOLLOWER"
+
+config ALGORITHM_LOGGING
+	bool "Enable algorithm logging"
+	default n
+
+config USE_MAGNETOMETER
+	bool "Use magnetometer instead of pulse counter to read a water meter"
+	default y
+
+config SEND_LOWEST_DATA
+	bool "Send lowest data to cloud, such as low data period and rate, it's not very helpful in minute by minute data"
+	default n
+
+config AWS_IOT_APP_CONNECTION_RETRY_TIMEOUT_SECONDS
+	int "Number of seconds between each AWS IoT connection retry"
+	default 30
+
+config AWS_IOT_APP_DEVICE_ID_USE_HW_ID
+	bool "Use HW ID as device ID"
+	select HW_ID_LIBRARY
+	help
+	  Use the devices's hardware ID as device ID when connecting to AWS IOT
+
+config WDT_MAX_WINDOW_MS
+	int "Watchdog maximum window in milliseconds"
+	default 100000
+
+config WDT_MIN_WINDOW_MS
+	int "Watchdog minimum window in milliseconds"
+	default 0
+
+config MIN_UPLOAD_DUTY_CYCLE_SECONDS
+	int "Minimum upload duty cycle in seconds"
+	default 60
+
+config DEFAULT_UPLOAD_DUTY_CYCLE_SECONDS
+	int "default upload duty cycle in seconds"
+	default 60
+
+config MIN_APP_DUTY_CYCLE_SECONDS
+	int "Minimum app duty cycle in seconds"
+	default 60
+
+config MAX_PACKETS_PER_UPLINK_MESSAGE
+	int "Maximum packets per uplink message"
+	default 60
+	help
+		At 120 Encoding failed: stream full
+
+config MAX_ALERTS_PER_UPLINK_MESSAGE
+	int "Maximum alerts per uplink message"
+	default 11
+
+config ALERT_MSG_MAX_SIZE
+	int "Alert packet data array maximum size, Maximum 4 int16_t values can fit in int64_t"
+	default 4
+
+config FW_ID_LEN
+	int "Firmware ID length"
+	default 16
+
+config MAX_DEV_ID_LEN
+	int "Maximum device ID length"
+	default 20
+
+config PROVIS_REQUEST_RETRY_TIMEOUT_SECONDS
+	int "Provisioning request send retry timeout in seconds"
+	default 60
+
+config RECONNECTION_TIMER_TIMEOUT_MINUTES
+	int "Connection timer in minutes before it forces a reconnect, should be less than CONNECTION_TIMER_TIMEOUT_HOURS"
+	default 360
+
+config CONNECTION_TIMER_TIMEOUT_HOURS
+	int "Connection timer timemout in hours before reboot"
+	default 24
+
+config TESTING_DISABLE_MODEM
+	bool "Disable modem for testing witout it, this should never be used for production"
+	default n
+
+config ENABLE_TWI_SCAN
+	bool "Enable TWI scan"
+	default n
+
+config APP_LOG_LEVEL
+	int "Application log level"
+	default 3
+	help
+	  0 - off
+	  1 - error
+	  2 - warning
+	  3 - info
+	  4 - debug
+
+config ADD_CLAIM_CERTIFICATES
+	bool "Add default claim certificates, only used for initial commissioning"
+	default n
+
+config SIMULATED_MAG
+	bool "Use simulated magnetometer instead of real hardware"
+	depends on USE_MAGNETOMETER
+	default n
+	help
+	  Enable this to use a simulated magnetometer for testing purposes
+
+config PROVISIONING
+	bool "Enable provisioning"
+	default n
+	help
+	  Enable this to enable provisioning
+
+config PIPE_MONITOR_BOARD
+	bool "Pipe monitor board"
+	default n
+	help
+	  Enable this to use a pipe monitor board. Forces use of pulse tracker algorithm.
+
+endmenu

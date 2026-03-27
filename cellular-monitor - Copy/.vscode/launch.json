@@ -1,0 +1,22 @@
+{
+  // Use IntelliSense to learn about possible attributes.
+  // Hover to view descriptions of existing attributes.
+  // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "type": "nrf-connect",
+      "request": "launch",
+      "name": "Launch the active build configuration",
+      "config": "${activeConfig}",
+      "runToEntryPoint": "main"
+    },
+    {
+      "type": "nrf-connect",
+      "request": "launch",
+      "name": "Launch build_nowi_debug",
+      "config": "${workspaceFolder}/build_nowi_debug",
+      "runToEntryPoint": "main"
+    }
+  ]
+}

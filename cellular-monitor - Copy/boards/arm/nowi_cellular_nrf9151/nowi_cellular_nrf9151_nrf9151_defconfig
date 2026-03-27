@@ -1,0 +1,27 @@
+# Copyright (c) 2024 NOWi
+# SPDX-License-Identifier: Apache-2.0
+
+# Enable MPU
+CONFIG_ARM_MPU=y
+
+# Enable hardware stack protection
+CONFIG_HW_STACK_PROTECTION=y
+
+# Enable TrustZone-M
+CONFIG_ARM_TRUSTZONE_M=y
+
+# Enable Secure execution
+CONFIG_TRUSTED_EXECUTION_SECURE=y
+
+# Enable GPIO
+CONFIG_GPIO=y
+
+# Enable serial drivers
+CONFIG_SERIAL=y
+
+# Enable console
+CONFIG_CONSOLE=y
+CONFIG_UART_CONSOLE=y
+
+# Enable pinctrl
+CONFIG_PINCTRL=y

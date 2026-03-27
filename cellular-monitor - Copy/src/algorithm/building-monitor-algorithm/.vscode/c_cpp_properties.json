@@ -1,0 +1,30 @@
+{
+    "configurations": [
+        {
+            "name": "macos-clang-arm64",
+            "includePath": [
+                "${workspaceFolder}/",
+                "${workspaceFolder}/**"
+            ],
+            "defines": [
+                "SIMULATED_MAG",
+                "LIS2MDL",
+                "ALGORITHM_LOGGER",
+                "ALGORITHM_FOLLOWER",
+                "ALGORITHM_POLL_AND_INT",
+                "ALGORITHM_MIN_MAX",
+                "ALGORITHM_PULSE_TRACKER",
+                "USE_MAGNETOMETER"
+            ],
+            "macFrameworkPath": [
+                "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/System/Library/Frameworks"
+            ],
+            "compilerPath": "/usr/bin/clang",
+            "cStandard": "${default}",
+            "cppStandard": "${default}",
+            "intelliSenseMode": "macos-clang-arm64",
+            "configurationProvider": "ms-vscode.makefile-tools"
+        }
+    ],
+    "version": 4
+}

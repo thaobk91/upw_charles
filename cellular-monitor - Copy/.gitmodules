@@ -1,0 +1,3 @@
+[submodule "src/algorithm/building-monitor-algorithm"]
+	path = src/algorithm/building-monitor-algorithm
+	url = https://github.com/charlesfayal/building-monitor-algorithm.git

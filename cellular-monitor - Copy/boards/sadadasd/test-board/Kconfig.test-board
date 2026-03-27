@@ -1,0 +1,2 @@
+config BOARD_TEST-BOARD
+	select SOC_NRF9151_LACA

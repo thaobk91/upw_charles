@@ -1,0 +1,10 @@
+identifier: test-board/nrf9151/ns
+name: adasd
+vendor: sadadasd
+type: mcu
+arch: arm
+ram: 128
+flash: 212
+toolchain:
+  - zephyr
+supported: []

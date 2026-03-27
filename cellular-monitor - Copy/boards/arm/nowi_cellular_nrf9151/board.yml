@@ -1,0 +1,8 @@
+board:
+  name: nowi_cellular_nrf9151
+  full_name: NOWi Cellular nRF9151
+  vendor: nowi
+  socs:
+  - name: nrf9151
+    variants:
+    - name: 'ns'

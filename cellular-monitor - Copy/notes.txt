@@ -1,0 +1,7 @@
+When you enter PSM, the device will be unreachable from the network for 70 minutes or until it transmits, whichever is shortest.
+After the device has reconnected to the network (either to send data or for a periodic TAU) it will stay connected for 3 minutes before it again will enter PSM.
+
+
+
+* No need to subscribe to the shadow delta topic, as the app is automatically doing that.
+

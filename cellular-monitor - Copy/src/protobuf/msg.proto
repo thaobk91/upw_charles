@@ -1,0 +1,59 @@
+syntax = "proto2";
+
+message ShadowDev {
+    required string devid = 1;
+    required string iccid = 2;
+    required string imei = 3;
+    required string fwv = 4;
+    optional string algo = 5; // deprecated
+    optional bool log = 6; // deprecated
+    required int64 ts = 7;
+    optional string mfwv = 8;
+    optional bool prvs = 9;
+}
+
+message ShadowRoam {
+    optional int32 rsrp = 1;
+    optional int32 bat = 2;
+    optional bool psm = 3;
+    optional int32 tau = 4;
+    optional int32 act = 5;
+    required int64 ts = 6;
+    optional int32 edrx = 7;
+    optional int32 ptw = 8;
+    optional int32 snr = 9;
+}
+
+message ShadowCfg {
+    required uint32 udc = 1;
+    required uint32 adc = 2;
+    optional bool devstate = 3;  // true = enabled, false = disabled
+    optional bool ispulse = 4;
+    optional string algo = 5;
+    optional bool log = 6;
+}
+
+message DataPacket {
+    required uint32 hc = 1;
+    optional uint32 ldbp = 2;
+    optional float lpr = 3;
+    optional bool acfg = 4;
+    required int64 ts = 5;
+}
+
+message AlertPacket {
+    required int64 data = 1;
+    required uint32 size = 2;
+    required uint32 ercd = 3;
+    required uint32 vrsn = 4;
+    required int64 ts = 5;
+}
+
+message ShadowUpdate {
+    required uint32 fcnt = 1;
+    optional ShadowDev dev = 2;
+    optional ShadowRoam roam = 3;
+    optional ShadowCfg cfg = 4;
+    repeated DataPacket env = 5;
+    repeated AlertPacket alrt = 6;
+}

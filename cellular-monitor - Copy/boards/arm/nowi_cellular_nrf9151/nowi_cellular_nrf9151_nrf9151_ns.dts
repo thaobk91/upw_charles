@@ -1,0 +1,14 @@
+/dts-v1/;
+#include <nordic/nrf9151ns_laca.dtsi>
+#include "nowi_cellular_nrf9151_common.dtsi"
+
+/ {
+	model = "NOWi Cellular nRF9151 NS";
+	compatible = "nowi,nowi-cellular-nrf9151-ns";
+
+	chosen {
+		zephyr,flash = &flash0;
+		zephyr,sram = &sram0_ns;
+		zephyr,code-partition = &slot0_ns_partition;
+	};
+};

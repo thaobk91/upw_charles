@@ -1,0 +1,11 @@
+# NOWi Cellular nRF9151 board configuration
+
+# Copyright (c) 2024 NOWi
+# SPDX-License-Identifier: Apache-2.0
+
+if BOARD_NOWI_CELLULAR_NRF9151
+
+config BOARD
+	default "nowi_cellular_nrf9151"
+
+endif # BOARD_NOWI_CELLULAR_NRF9151

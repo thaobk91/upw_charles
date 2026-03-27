@@ -1,0 +1,7 @@
+board:
+  name: test-board
+  vendor: sadadasd
+  socs:
+  - name: nrf9151
+    variants:
+    - name: ns

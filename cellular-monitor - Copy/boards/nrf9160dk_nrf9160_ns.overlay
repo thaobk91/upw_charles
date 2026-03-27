@@ -1,0 +1,122 @@
+
+&pinctrl {
+
+	pwmbuzz {
+		compatible = "pwm-leds";
+		buzzpwm: buzz_pwm {
+			pwms = <&pwm0 0 PWM_HZ(880) PWM_POLARITY_NORMAL>;
+		};
+	};
+
+	pwm0_buzz_default: pwm0_buzz_default {
+		group1 {
+			psels = <NRF_PSEL(PWM_OUT0, 0, 5)>;
+			//nordic,invert;
+		};
+	};
+
+	pwm0_buzz_sleep: pwm0_buzz_sleep {
+		group1 {
+			psels = <NRF_PSEL(PWM_OUT0, 0, 5)>;
+			low-power-enable;
+		};
+	};
+
+	i2c2_default_alt: i2c2_default_alt {
+		group1 {
+			nordic,drive-mode = <NRF_DRIVE_H0H1>;
+			psels = <NRF_PSEL(TWIM_SDA, 0, 30)>,
+					<NRF_PSEL(TWIM_SCL, 0, 31)>;
+		};
+	};
+
+	i2c2_sleep_alt: i2c2_sleep_alt {
+		group1 {
+			nordic,drive-mode = <NRF_DRIVE_H0H1>;
+			psels = <NRF_PSEL(TWIM_SDA, 0, 30)>,
+					<NRF_PSEL(TWIM_SCL, 0, 31)>;
+			low-power-enable;
+		};
+	};
+
+	i2c1_default_alt: i2c1_default_alt {
+		group1 {
+			nordic,drive-mode = <NRF_DRIVE_H0H1>;
+			psels = <NRF_PSEL(TWIM_SDA, 0, 26)>,
+					<NRF_PSEL(TWIM_SCL, 0, 27)>;
+		};
+	};
+
+	i2c1_sleep_alt: i2c1_sleep_alt {
+		group1 {
+			nordic,drive-mode = <NRF_DRIVE_H0H1>;
+			psels = <NRF_PSEL(TWIM_SDA, 0, 27)>,
+					<NRF_PSEL(TWIM_SCL, 0, 27)>;
+			low-power-enable;
+		};
+	};
+};
+
+buzz_pwm_inst: &pwm0 {
+	status = "okay";
+	pinctrl-0 = <&pwm0_buzz_default>;
+	pinctrl-1 = <&pwm0_buzz_sleep>;
+	pinctrl-names = "default", "sleep";
+};
+
+mag2: &i2c2 {
+	status = "disabled";
+	compatible = "nordic,nrf-twim";
+	pinctrl-0 = <&i2c2_default_alt>;
+	pinctrl-1 = <&i2c2_sleep_alt>;
+	pinctrl-names = "default", "sleep";
+    clock-frequency = < I2C_BITRATE_FAST >;
+};
+
+mag1: &i2c3 {
+	status = "okay";
+	compatible = "nordic,nrf-twim";
+	pinctrl-0 = <&i2c1_default_alt>;
+	pinctrl-1 = <&i2c1_sleep_alt>;
+	pinctrl-names = "default", "sleep";
+    clock-frequency = < I2C_BITRATE_FAST >;
+};
+
+/ {
+	magnetometer {
+		compatible = "gpio-keys";
+		magpower: mag_power {
+			gpios = <&gpio0 0 (GPIO_ACTIVE_HIGH)>;
+			label = "lis2mdl power pin";
+		};
+		magint: mag_int {
+			gpios = <&gpio0 1 (GPIO_ACTIVE_HIGH)>;
+			label = "lis2mdl int pin";
+		};
+		mag2power: mag2_power {
+			gpios = <&gpio0 4 (GPIO_ACTIVE_HIGH)>;
+			label = "sensor 2 power pin";
+		};
+
+		mag2int: mag2_int {
+			gpios = <&gpio0 3 (GPIO_ACTIVE_HIGH)>;
+			label = "sensor 2 interrupt pin";
+		};
+	};
+	
+	buttons {
+		compatible = "gpio-keys";
+		power_button: button_0 {
+			gpios = <&gpio0 14 (GPIO_PULL_UP | GPIO_ACTIVE_LOW)>;
+			label = "Power Button";
+		};
+	};
+	
+	aliases {
+		successled = &led0;
+		infoled = &led1;
+		errorled = &led2;
+		buzzer = &buzzpwm;
+		power-button = &power_button;
+	};
+};

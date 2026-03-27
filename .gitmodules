@@ -1,0 +1,3 @@
+[submodule "cellular-monitor"]
+	path = cellular-monitor
+	url = https://github.com/charlesfayal/cellular-building-monitor.git

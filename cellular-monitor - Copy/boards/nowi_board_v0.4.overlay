@@ -1,0 +1,13 @@
+/{
+  magnetometer {
+		compatible = "gpio-keys";
+		magpower: mag_power {
+			gpios = <&gpio0 15 (GPIO_ACTIVE_HIGH)>;
+			label = "Sensor 1 power pin";
+		};
+        mag2power: mag2_power {
+			gpios = <&gpio0 16 (GPIO_ACTIVE_HIGH)>;
+			label = "Sensor 2 power pin";
+		};
+	};
+};
